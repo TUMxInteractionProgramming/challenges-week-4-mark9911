@@ -91,10 +91,14 @@ h1 a {
     color: white;
 }
 
-h1 #channel-star {
+h1 .fa-star {
     /* #6 #liking #filled  */
     position:absolute;
     right: 16px;
+}
+
+.fa-star, .fa-chevron-right, .fa-lightbulb, .fa-fire, .fa-smile {
+    font-size: 24px;
 }
 
 /* CHANNELS LIST */
@@ -172,7 +176,7 @@ li.selected {
     border-bottom: 4px solid #3F51B5;
 }
 
-#tab-bar button img {
+#tab-bar button i {
     display: block;
     margin: 0 auto 4px auto;
 }
