@@ -4,7 +4,7 @@
 var currentChannel;
 
 var currentLocation = {
-    longtitude:1.2544938,
+    longitude:1.2544938,
     latitude:103.8208173,
     whats3words:'half.globe.civil'
 };
@@ -74,3 +74,82 @@ function toggleEmojis() {
     /* $('#emojis').show(); // #show */
     $('#emojis').toggle(); // #toggle
 }
+
+/*  #8 add Messege constructor   */
+
+function Message (createdBy, latitude, longitude, createdOn, expiresOn, text, own) {
+    this.createdBy = currentLocation.whats3words;
+    this.latitude = currentLocation.latitude;
+    this.longitude = currentLocation.longitude;
+    this.createdOn = new Date();
+    this.expiresOn = new Date(Date.now()+9e5);
+    this.text = text;
+    this.own = true;
+}
+
+
+/* #8 temporary ouput for chat bar button  */
+function sendMessage() {
+    var msg1 = new Message ("bobo.cha.left", 123, 456, Date.now(), Date(Date.now()+9e5), $('#inputMessage').val() , true);
+    console.log(" Chat bar msg: ", msg1);  // test on calling the new constructor instance property
+    $('#messages').append(createMessageElement(msg1));
+}
+ 
+// #8 Create and append new msg
+function createMessageElement(Message) {
+var diffMins = Math.round(900000 / 60000); // convert Date of createdOn to minutes
+var dateLocal = Message.createdOn.toLocaleString('en-GB', { timeZone: 'UTC' });
+var msgClass = Message.own? "message own": "message"; // changing class when message is don ourselves 
+
+return '<div class="'+ msgClass +'"><h3><a href="Message.createdBy" target="_blank"><strong>' 
++ Message.createdBy + '</strong></a>'
+ + dateLocal + '<em>' +diffMins+ 'min. left</em></h3> <p>' 
+ +Message.text+ '</p><button>+5 min.</button></div>;';
+}
+
+// #8 function to scroll to bottom of messages
+function gotoBottom(){
+    var element = document.getElementById("messages");
+    element.scrollTop = element.scrollHeight - element.clientHeight;
+ }
+
+ function Channels (name, createdOn, createdBy, starred, expiresin, messageCount) {
+    this.name = name;
+    this.createdOn = new Date();
+    this.createdBy = createdBy;
+    this.starred = true;
+    this.expiresin = new Date(Date.now()+9e5);
+    this.messageCount = messageCount;
+    
+}
+
+ /* #8 add <li> to #channels list  */
+function listChannels() {
+    $('#list').append(createChannelElement(Yummy)); 
+    $('#list').append(createChannelElement(SevenContinents));
+    $('#list').append(createChannelElement(KillerApp)); 
+    $('#list').append(createChannelElement(FirstPersonOnMars)); 
+    $('#list').append(createChannelElement(Octoberfest)); 
+ }
+
+ /* #8 Add code to index.html using jquery*/
+ function createChannelElement(Channels) { 
+    var diffMins = Math.round(900000 / 60000); // convert Date of createdOn to minutes
+    var starchecker = Channels.starred?"fas fa-star":"far fa-star";
+    var $li = $('<li/>').attr('onClick','switchChannel('+ Channels.name +');').text('#'+Channels.name);
+    var $span = $('<span/>').addClass("channel-meta");
+    var starchecker = Channels.starred?"fas fa-star":"far fa-star";
+    var $i = $('<i/>').addClass(starchecker)
+    var $span2 = $('<span/>').text(Channels.expiresin +' min')
+    var $span3 = $('<span/>').text(Channels.messageCount +' new')
+    var $i2 = $('<i/>').addClass('fas fa-chevron-right');
+
+    $span.append($i, $span2, $span3, $i2);
+    $li.append($span);
+
+    console.log($li);
+    return $li;  
+
+/* #8 alternative code to adding code to index.html - for debugging */
+// return '<li onclick="switchChannel(' +Channels.name+')">#'+Channels.name+'<span class="channel-meta"><i class="'+starchecker+'"></i><i class="fas fa-chevron-right"></i></span></li>';
+ } 

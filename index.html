@@ -23,7 +23,7 @@
     <script src="js/Channel.js"></script>
 
 </head>
-<body>
+<body onload="listChannels()">
 
 <!-- channel area -->
 <div id="channels">
@@ -35,58 +35,8 @@
     </h1>
 
     <!-- CHANNELS -->
-    <ul>
+    <ul id="list"> 
         <!-- #7 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel(Yummy)">
-            #Yummy
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <i class="far fa-star"></i>
-                <!-- #5 #channels #icons now with chevron -->
-                <i class="fas fa-chevron-right"></i>
-            </span>
-        </li>
-        <!-- #7 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li class="selected" onclick="switchChannel(SevenContinents)">
-            #SevenContinents
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <i class="fas fa-star"></i>
-                <!-- #5 #channels #icons now with chevron -->
-                <i class="fas fa-chevron-right"></i>
-            </span>
-        </li>
-        <!-- #7 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel(KillerApp)">
-            #KillerApp
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <i class="far fa-star"></i>
-                <!-- #5 #channels #icons now with chevron -->
-                <i class="fas fa-chevron-right"></i>
-            </span>
-        </li>
-        <!-- #7 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel(FirstPersonOnMars)">
-            #FirstPersonOnMars
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <i class="fas fa-star"></i>
-                <!-- #5 #channels #icons now with chevron -->
-                <i class="fas fa-chevron-right"></i>
-            </span>
-        </li>
-        <!-- #7 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel(Octoberfest)">
-            #Octoberfest
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
-            <span class="channel-meta">
-                <i class="far fa-star"></i>
-                <!-- #5 #channels #icons now with chevron -->
-                <i class="fas fa-chevron-right"></i>
-            </span>
-        </li>
-
     </ul>
 
     <!-- TAB BAR -->
@@ -164,6 +114,7 @@
             <p>北京</p>
             <button>+5 min.</button>
         </div>
+        
 
     </div>
 
@@ -171,6 +122,10 @@
     <div id="chat-bar"> <!-- #6 #smile #show the menu on click -->
         <button id="emojis-button" onclick="toggleEmojis()"><i class="far fa-smile"></i></button>
         <div id="emojis">&#x1F601; &#x1F602; &#x1F603; &#x1F604; &#x1F605; &#x1F606; &#x1F607;</div>
+        <form action="" id="formId" style>
+            <input type="text" id="inputMessage" name="inputMessage"placeholder="Message..." maxlength="140">
+        </form>
+        <button id="msg-button" onclick="sendMessage(); gotoBottom();"><i class="fas fa-arrow-right"></i></button>
     </div>
 </div>
 

@@ -91,13 +91,13 @@ h1 a {
     color: white;
 }
 
-h1 .fa-star {
+h1 .fa-star, #msg-button {
     /* #6 #liking #filled  */
     position:absolute;
     right: 16px;
 }
 
-.fa-star, .fa-chevron-right, .fa-lightbulb, .fa-fire, .fa-smile {
+.fa-star, .fa-chevron-right, .fa-lightbulb, .fa-fire, .fa-smile, .fa-arrow-right {
     font-size: 24px;
 }
 
@@ -271,6 +271,37 @@ li.selected {
     bottom: 8px;
 }
 
+/* align the 2 boxes between star and right chevron verticlly center  */
+.channel-meta {
+    display: flex;
+    align-items: center;
+}
+
+/* box styling for text between star and right chevron*/
+.channel-meta span {
+    background-color: #3F51B5;
+    color: white;
+    padding: 3px;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+/* shift own message to the right    */
 .message.own {
     margin-left: 17.5%;
+}
+
+/* #8 diplay format for message input box    */
+#formId {
+    display: flex;
+    align-items: center
+   
+    background-color: transparent;
+    border: 0px solid; 
+    color: #CCC;
+    flex-grow: 20;
+}
+
+/* take out ouline of msg box ...not working though in Chrome maybe?  */
+*:focus{
+    outline: none;
 }
